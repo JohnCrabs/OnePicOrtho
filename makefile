@@ -2,7 +2,7 @@ CFLAGS = -Wall -pedantic -Werror
 LFLAGS = -lm -lSDL2 -lSDL2_image -lSDL2_ttf
 OBJS   = imgEdit.o ortho.o main.o
 FOLDER = src
-PROG   = OnePicOrtho_v1.0
+PROG   = OnePicOrtho_v1.1
 CC    = g++ -std=c++11 -std=gnu++14
 
 # top-level rule to create the program.

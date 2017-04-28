@@ -179,8 +179,8 @@ void ortho::importIMGpar()
 		return ;
 	}
 	
-	_IMGpar.xo = (_imgWidth / 2.0); //xo
-	_IMGpar.yo = (_imgHeight / 2.0); //yo
+	readNum(openFile, &_IMGpar.xo); //xo
+	readNum(openFile, &_IMGpar.yo); //yo
 	readNum(openFile, &_IMGpar.c); //c
 	
 	readNum(openFile, &_IMGpar.Xo); //Xo
@@ -196,7 +196,7 @@ void ortho::importIMGpar()
 	printf("\n\n********************");
 	printf("\n* IMAGE PARAMETERS *\n");
 	printf("********************\n\n");
-	printf("c = %lf\nxo = %lf\nyo = %lf\n\n", _IMGpar.c, _IMGpar.xo, _IMGpar.yo);
+	printf("xo = %lf\nyo = %lf\nc = %lf\n\n", _IMGpar.xo, _IMGpar.yo, _IMGpar.c);
 	printf("Xo = %lf\nYo = %lf\nZo = %lf\n\n", _IMGpar.Xo, _IMGpar.Yo, _IMGpar.Zo);
 	printf("w = %lf\nf = %lf\nk = %lf\n\n", _IMGpar.w, _IMGpar.f, _IMGpar.k);
 	
@@ -317,7 +317,7 @@ void ortho::orthoXYZ()
 	newHeight = 0;
 	
 	FILE* outFile = fopen(pathNew, "w");
-	for(double y = Y_max; y >= Y_min; y-=newPixelSize) {
+	for(double y = Y_min; y <= Y_max; y+=newPixelSize) {
 		for(int bands = 0; bands < _imgBands; bands++) {
 			for(double x = X_min; x <= X_max; x+=newPixelSize) {
 				pX = x;
